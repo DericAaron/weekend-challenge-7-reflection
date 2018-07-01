@@ -24,7 +24,21 @@ class Page4 extends Component {
         console.log('click');
         const action = {type: 'ADD_INPUT', var: 'comments', payload: this.state.user};
         this.props.dispatch(action);
+
+        this.sendToServer(this.props.reduxStore.feedback);
+        
     } // end handleNext
+
+    sendToServer = (feedback) => {
+        axios.post('/feedback', feedback)
+            .then( (response) => {
+                console.log('Updated DB', response.data);
+                        
+            }).catch( (error) => {
+                console.log('Error posting to DB');
+                        
+            });
+    } //end send to server
 
   render() {
     return (
