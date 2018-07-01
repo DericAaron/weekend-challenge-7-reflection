@@ -15,6 +15,9 @@ const feedback = (state = {}, action) => {
     if(action.type === 'ADD_INPUT'){
         return {...state, [action.var]: action.payload};
     }
+    else if(action.type === 'RESET'){
+        return {};
+    }
 
     return state;
 
