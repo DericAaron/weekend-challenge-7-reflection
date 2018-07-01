@@ -10,27 +10,15 @@ const mapReduxToProps = (reduxStore) => ({
 
 class Page4 extends Component {
 
-    constructor(props){
-        super(props);
-
-        this.state = {user: ''};
-    } //end constructor
-
     handleChange = (event) => {
-        this.setState({user: event.target.value});
+        const action = {type: 'ADD_INPUT', var: 'comments', payload: event.target.value};
+        this.props.dispatch(action);
     }//end handleChange
 
     handleNext = () => {
         console.log('click');
-        const action = {type: 'ADD_INPUT', var: 'comments', payload: this.state.user};
-        this.props.dispatch(action);
 
-        this.sendToServer(this.props.reduxStore.feedback);
-        
-    } // end handleNext
-
-    sendToServer = (feedback) => {
-        axios.post('/feedback', feedback)
+        axios.post('/feedback', this.props.reduxStore.feedback)
             .then( (response) => {
                 console.log('Updated DB', response.data);
                         
@@ -38,7 +26,8 @@ class Page4 extends Component {
                 console.log('Error posting to DB');
                         
             });
-    } //end send to server
+        
+    } // end handleNext
 
   render() {
     return (
@@ -50,7 +39,7 @@ class Page4 extends Component {
                 <p>4 of 4 pages</p>
                 <br/>
                 <p>Any Comments you want to leave?</p>
-                <input type="text" placeholder="" value={this.state.user} onChange={this.handleChange}/>
+                <input type="text" placeholder="" onChange={this.handleChange}/>
                 <br/>
                 <Link to="/5">
                 <button onClick={this.handleNext}>Submit</button>

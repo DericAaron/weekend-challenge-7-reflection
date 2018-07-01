@@ -20,7 +20,15 @@ router.get('/', (req, res) => {
 
 //post route
 router.post('/', (req, res) => {
-    res.send(req.body);
+    const item = req.body
+    const queryText = `INSERT INTO feedback (feeling, understanding, support, comments) VALUES($1, $2, $3, $4);`;
+
+    pool.query(queryText, [item.feeling, item.understanding, item.support, item.comments])
+        .then( (results) => {
+            res.sendStatus(201);
+        }).catch( () => {
+            res.sendStatus(500);
+        })
 });
 
 router.delete('/:id', (req, res) => {
