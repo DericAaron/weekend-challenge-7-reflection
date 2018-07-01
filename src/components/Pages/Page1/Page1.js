@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 const mapReduxToProps = (reduxStore) => ({
     reduxStore
@@ -11,21 +13,10 @@ const mapReduxToProps = (reduxStore) => ({
 
 class Page1 extends Component {
 
-    constructor(props){
-        super(props);
-
-        this.state = {user: 0};
-    } //end constructor
-
     handleChange = (event) => {
-        this.setState({user: event.target.value});
-    }//end handleChange
-
-    handleNext = () => {
-        console.log('click');
-        const action = {type: 'ADD_INPUT', var: 'feeling', payload: this.state.user};
+        const action = {type: 'ADD_INPUT', var: 'feeling', payload: event.target.value};
         this.props.dispatch(action);
-    } // end handleNext
+    }//end handleChange
 
   render() {
     return (
@@ -34,15 +25,19 @@ class Page1 extends Component {
             <HeaderPage />
             <br/>
             <div>
-                <p>1 of 4 pages</p>
-                <br/>
-                <p>How are you feeling today?</p>
-                <TextField label="1 - 5" type="number" value={this.state.user} onChange={this.handleChange}/>
-                <br/>
-                <br/>
-                <Link to="/2">
-                <Button variant="contained" color="primary" onClick={this.handleNext}>Next -></Button>
-                </Link>
+                <Card>
+                        <CardContent>
+                        <p>1 of 4 pages</p>
+                        
+                        <p>How are you feeling today?</p>
+                        <TextField label="1 - 5" type="number" onChange={this.handleChange}/>
+                        <br/>
+                        <br/>
+                        <Link to="/2" style={{textDecoration: 'none'}}>
+                            <Button variant="contained" color="primary" onClick={this.handleNext}>Next -></Button>
+                        </Link>
+                    </CardContent>
+                </Card>
             </div>
         </div>
         

@@ -5,6 +5,8 @@ import {connect} from 'react-redux';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 const mapReduxToProps = (reduxStore) => ({
     reduxStore
@@ -38,15 +40,21 @@ class Page4 extends Component {
             <HeaderPage />
             <br/>
             <div>
-                <p>4 of 4 pages</p>
-                <br/>
-                <p>Any Comments you want to leave?</p>
-                <TextField label="Comments" type="text" onChange={this.handleChange}/>
-                <br/>
-                <br/>
-                <Link to="/5">
-                <Button variant="contained" color="primary" onClick={this.handleNext}>Submit</Button>
-                </Link>
+                <Card>
+                    <CardContent>
+                        <p>4 of 4 pages</p>
+                        
+                        <p>Any Comments you want to leave?</p>
+                        <TextField label="Comments" type="text" onChange={this.handleChange}/>
+                        <br/>
+                        <br/>
+                        <Link to="/5" style={{textDecoration: 'none'}}>
+                            <Button variant="contained" color="primary" onClick={this.handleNext}>Submit</Button>
+                        </Link>
+                    </CardContent>
+                </Card>
+               
+
             </div>
         </div>
         

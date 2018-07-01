@@ -3,6 +3,8 @@ import HeaderPage from '../HeaderPage/HeaderPage';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 const mapReduxToProps = (reduxStore) => ({
     reduxStore
@@ -23,12 +25,14 @@ class Page5 extends Component {
             <HeaderPage />
             <br/>
             <div>
-
-                <h3>Thank You!</h3>
-                
-                <Link to="/">
-                <Button  variant="contained" color="primary" onClick={this.handleNext}>Leave New Feedback</Button>
-                </Link>
+                <Card>
+                    <CardContent>
+                        <h3>Thank You!</h3>
+                        <Link to="/" style={{textDecoration: 'none'}}>
+                            <Button  variant="contained" color="primary" onClick={this.handleNext}>Leave New Feedback</Button>
+                        </Link>
+                    </CardContent>
+                </Card> 
             </div>
         </div>
         

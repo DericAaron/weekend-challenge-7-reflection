@@ -34,7 +34,7 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
-        <div className="App">
+        <div className="App grid-container">
           <Header />
           <br/>
           <Router>
