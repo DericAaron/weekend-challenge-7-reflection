@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import HeaderPage from '../HeaderPage/HeaderPage';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import Button from '@material-ui/core/Button';
 
 const mapReduxToProps = (reduxStore) => ({
     reduxStore
@@ -26,7 +27,7 @@ class Page5 extends Component {
                 <h3>Thank You!</h3>
                 
                 <Link to="/">
-                <button onClick={this.handleNext}>Leave New Feedback</button>
+                <Button  variant="contained" color="primary" onClick={this.handleNext}>Leave New Feedback</Button>
                 </Link>
             </div>
         </div>

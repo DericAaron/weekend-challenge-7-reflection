@@ -3,6 +3,8 @@ import HeaderPage from '../HeaderPage/HeaderPage';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import axios from 'axios';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 const mapReduxToProps = (reduxStore) => ({
     reduxStore
@@ -39,10 +41,11 @@ class Page4 extends Component {
                 <p>4 of 4 pages</p>
                 <br/>
                 <p>Any Comments you want to leave?</p>
-                <input type="text" placeholder="" onChange={this.handleChange}/>
+                <TextField label="Comments" type="text" onChange={this.handleChange}/>
+                <br/>
                 <br/>
                 <Link to="/5">
-                <button onClick={this.handleNext}>Submit</button>
+                <Button variant="contained" color="primary" onClick={this.handleNext}>Submit</Button>
                 </Link>
             </div>
         </div>

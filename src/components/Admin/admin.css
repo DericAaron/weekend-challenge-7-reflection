@@ -1,0 +1,11 @@
+table {
+    width: 80%;
+    margin-left: 10%;
+}
+thead {
+    background-color: #44A1A0;
+}
+
+tbody tr:nth-child(even){
+    background-color: #53D8FB;
+}
